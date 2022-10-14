@@ -48,6 +48,7 @@ func (c *Conn) serverHandshakeAutoSwitch() error {
 			return err
 		}
 		// 运行 GMSSL 握手流程
+		fmt.Printf("src ip:%+v, recv gm-tls handshake, ver:%+v", c.RemoteAddr(), c.vers)
 		return runServerHandshakeGM(c, hs, isResume)
 	case VersionSSL30, VersionTLS10, VersionTLS11, VersionTLS12:
 		// SSL v3.0 - TLS 1.3
@@ -62,6 +63,7 @@ func (c *Conn) serverHandshakeAutoSwitch() error {
 			return err
 		}
 		// 运行 TLS 握手流程
+		fmt.Printf("src ip:%+v, recv tls handshake, ver:%+v", c.RemoteAddr(), c.vers)
 		return runServerHandshake(c, hs, isResume)
 	default:
 		_ = c.sendAlert(alertProtocolVersion)
