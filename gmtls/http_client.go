@@ -63,7 +63,7 @@ func NewCustomHTTPSClient(config *Config) *http.Client {
 
 func newDefaultGMHttpClientTransport(tlsConfig *Config) http.RoundTripper {
 	return &http.Transport{
-		DialTLSContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
+		DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
 
 			dialer := &net.Dialer{}
 
