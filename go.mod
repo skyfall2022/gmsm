@@ -1,4 +1,4 @@
-module github.com/tjfoc/gmsm
+module github.com/skyfall2022/gmsm
 
 go 1.14
 
